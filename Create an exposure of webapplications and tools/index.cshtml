@@ -1,0 +1,38 @@
+@page
+@model WebExposureModel
+@{
+    ViewData["Title"] = "Exposure of Web Application and Tools";
+}
+
+<h2>ASP.NET Core Web Application – Example</h2>
+
+<form method="post">
+
+    <label>Your Name:</label><br />
+    <input type="text" name="UserName" class="form-control" />
+
+    <br />
+
+    <label>Your Age:</label><br />
+    <input type="number" name="Age" class="form-control" />
+
+    <br />
+
+    <label>Select Course:</label><br />
+    <select name="Course" class="form-control">
+        <option value="BSc Computer Science">BSc Computer Science</option>
+        <option value="BCA">BCA</option>
+        <option value="BSc IT">BSc IT</option>
+    </select>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (Model.Message != null)
+{
+    <div style="margin-top:20px; color:green;">
+        <strong>@Model.Message</strong>
+    </div>
+}
