@@ -1,0 +1,57 @@
+@page
+@model StudentsModel
+@{
+    ViewData["Title"] = "Student Manager";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Student.Id" />
+    <div>
+        <label asp-for="Student.Name"></label>
+        <input asp-for="Student.Name" />
+    </div>
+    <div>
+        <label asp-for="Student.Age"></label>
+        <input asp-for="Student.Age" type="number" />
+    </div>
+    <div>
+        <button type="submit" asp-page-handler="Save">@(Model.Student.Id == 0 ? "Add" : "Update")</button>
+        @if (Model.Student.Id != 0)
+        {
+            <button type="submit" asp-page-handler="Cancel">Cancel</button>
+        }
+    </div>
+</form>
+
+<hr />
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model.Students)
+        {
+            <tr>
+                <td>@s.Name</td>
+                <td>@s.Age</td>
+                <td>
+                    <form method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@s.Id" />
+                        <button type="submit" asp-page-handler="Edit">Edit</button>
+                    </form>
+                    <form method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@s.Id" />
+                        <button type="submit" asp-page-handler="Delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
