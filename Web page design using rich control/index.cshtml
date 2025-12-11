@@ -1,0 +1,34 @@
+@page
+@model ProfileUploadModel
+@{
+    ViewData["Title"] = "Upload Profile";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProfilePicture">Upload Profile Picture:</label>
+        <input asp-for="ProfilePicture" type="file" />
+        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p><strong>@Model.Message</strong></p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
