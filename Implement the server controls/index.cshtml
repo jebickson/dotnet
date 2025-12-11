@@ -1,0 +1,24 @@
+@page
+@model ColorPickerModel
+@{
+    ViewData["Title"] = "Color Picker";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div>
+        <label for="FavoriteColor">Choose your favorite color:</label>
+        <select id="FavoriteColor" name="FavoriteColor" asp-for="FavoriteColor" asp-items="Model.ColorOptions">
+            <option value="">-- Select a color --</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p><strong>@Model.Message</strong></p>
+}
