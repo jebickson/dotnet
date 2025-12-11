@@ -1,0 +1,24 @@
+@page
+@model DepartmentSelectorModel
+@{
+    ViewData["Title"] = "Department Selector";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div>
+        <label for="Department">Select Department:</label>
+        <select asp-for="SelectedDepartment" asp-items="Model.DepartmentList">
+            <option value="">-- Choose --</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p><strong>@Model.Message</strong></p>
+}
