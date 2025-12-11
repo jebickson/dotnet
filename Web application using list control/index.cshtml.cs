@@ -32,4 +32,4 @@ public class LanguageSelectorModel : PageModel
             new SelectListItem { Value = "Go", Text = "Go" }
         };
     }
-}
+} 
