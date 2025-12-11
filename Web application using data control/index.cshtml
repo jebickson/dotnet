@@ -1,0 +1,29 @@
+@page
+@model EmployeeListModel
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model.Employees)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Department</td>
+                <td>@emp.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
