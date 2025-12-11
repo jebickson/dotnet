@@ -1,0 +1,29 @@
+@page
+@model LanguageSelectorModel
+@{
+    ViewData["Title"] = "Programming Language Selector";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div>
+        <label for="SelectedLanguages">Select your favorite languages:</label><br />
+        <select asp-for="SelectedLanguages" asp-items="Model.LanguageOptions" multiple size="5">
+        </select>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+@if (Model.SelectedLanguages?.Count > 0)
+{
+    <p><strong>You selected:</strong></p>
+    <ul>
+        @foreach (var lang in Model.SelectedLanguages)
+        {
+            <li>@lang</li>
+        }
+    </ul>
+}
